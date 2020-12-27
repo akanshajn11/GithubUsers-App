@@ -1,9 +1,11 @@
 package com.example.users.network
 
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
+import com.squareup.moshi.Moshi
 
 /*This class holds the network layer for the app. This is the API which our ViewModel will use
 to communicate with the web service. In this class Retrofit service API is implemented*/
@@ -11,9 +13,18 @@ to communicate with the web service. In this class Retrofit service API is imple
 //Base URL for the Web Service
 private const val BASE_URL = "https://api.github.com"
 
+/**
+ * Build the Moshi object that Retrofit will be using, making sure to add the Kotlin adapter for
+ * full Kotlin compatibility.
+ */
+private val moshi = Moshi.Builder()
+    .add(KotlinJsonAdapterFactory())
+    .build()
+
+
 //Creating Retrofit object using Retrofit builder
 private val retrofit = Retrofit.Builder()
-    .addConverterFactory(MoshiConverterFactory.create())
+    .addConverterFactory(MoshiConverterFactory.create(moshi))
     .baseUrl(BASE_URL)
     .build()
 
