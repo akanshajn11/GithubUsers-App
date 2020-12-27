@@ -1,7 +1,9 @@
 package com.example.users.network
 
+import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.scalars.ScalarsConverterFactory
+import retrofit2.http.GET
 
 /*This class holds the network layer for the app. This is the API which our ViewModel will use
 to communicate with the web service. In this class Retrofit service API is implemented*/
@@ -23,3 +25,16 @@ In this case, you want Retrofit to fetch a JSON response from the web service, a
 Retrofit has a ScalarsConverter that supports strings and other primitive types,
 so you call addConverterFactory() on the builder with an instance of ScalarsConverterFactory
 */
+
+
+//Below interface defines how Retrofit talks to the web server using HTTP requests
+interface RetrofitApiService {
+    @GET("/search/users?q=language:android+location:barcelona")
+    fun getUsers():
+            Call<String>
+}
+/*
+@GET : We use this annotation and specify path or end point for the web service method
+getUsers() : When this method is invoked, Retrofit appends the given end point to base url and creates call object
+Call : This object starts the request
+ */
