@@ -43,5 +43,9 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation "com.squareup.retrofit2:retrofit:$version_retrofit" //Retrofit 2 library
-    implementation "com.squareup.retrofit2:converter-scalars:$version_retrofit" //Retrofit scalar converter-enables Retrofit to return the JSON result as a String
+   // implementation "com.squareup.retrofit2:converter-scalars:$version_retrofit" //Retrofit scalar converter-enables Retrofit to return the JSON result as a String
+    implementation "com.squareup.moshi:moshi-kotlin:$version_moshi" //adds support for the Moshi JSON library with Kotlin support.
+    implementation "com.squareup.retrofit2:converter-moshi:$version_retrofit"
 }
+
+/*Moshi library is an Android JSON parser that converts a JSON string into Kotlin objects*/

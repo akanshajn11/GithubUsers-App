@@ -2,7 +2,7 @@ package com.example.users.network
 
 import retrofit2.Call
 import retrofit2.Retrofit
-import retrofit2.converter.scalars.ScalarsConverterFactory
+import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 
 /*This class holds the network layer for the app. This is the API which our ViewModel will use
@@ -13,7 +13,7 @@ private const val BASE_URL = "https://api.github.com"
 
 //Creating Retrofit object using Retrofit builder
 private val retrofit = Retrofit.Builder()
-    .addConverterFactory(ScalarsConverterFactory.create())
+    .addConverterFactory(MoshiConverterFactory.create())
     .baseUrl(BASE_URL)
     .build()
 
