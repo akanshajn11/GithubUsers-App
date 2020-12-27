@@ -42,7 +42,7 @@ so you call addConverterFactory() on the builder with an instance of ScalarsConv
 interface RetrofitApiService {
     @GET("/search/users?q=language:android+location:barcelona")
     fun getUsers():
-            Call<String>
+            Call<List<UserProperty>>
 }
 /*
 @GET : We use this annotation and specify path or end point for the web service method
