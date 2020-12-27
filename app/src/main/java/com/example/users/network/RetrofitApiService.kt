@@ -38,3 +38,16 @@ interface RetrofitApiService {
 getUsers() : When this method is invoked, Retrofit appends the given end point to base url and creates call object
 Call : This object starts the request
  */
+
+//Below public object will initialize the Retrofit service
+object RetrofitApi {
+    val retrofitService: RetrofitApiService by lazy {
+        retrofit.create(RetrofitApiService::class.java)
+    }
+}
+/*
+create() : Creates Retrofit service with RetrofitApiService interface
+RetrofitApi : Public object to expose the service to rest of the app. Inside this object, we lazily initialize Retrofit service
+
+So when app calls RetrofitApi.retrofitService, it will get singleton Retrofit object that implements RetrofitApiService
+ */
