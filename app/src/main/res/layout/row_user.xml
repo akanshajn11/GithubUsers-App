@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="user"
+            type="com.example.users.network.Item" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/cardHeight"
+        android:layout_marginLeft="@dimen/cardMargin"
+        android:layout_marginTop="@dimen/cardMargin"
+        android:layout_marginRight="@dimen/cardMargin"
+        android:clickable="true"
+        android:elevation="@dimen/cardElevation"
+        android:focusable="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/cover"
+                android:layout_width="@dimen/imageWidth"
+                android:layout_height="@dimen/imageHeight"
+                android:layout_marginLeft="@dimen/imageMarginLeft"
+                android:layout_marginTop="@dimen/imageMarginTop" />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/cardTextLeftMargin"
+                android:layout_marginTop="@dimen/cardTextTopMargin"
+                android:layout_toRightOf="@id/cover"
+                android:text="Username"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/githubLink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/title"
+                android:layout_marginLeft="@dimen/cardTextLeftMargin"
+                android:layout_marginTop="@dimen/cardTextTopMargin"
+                android:layout_toRightOf="@id/cover"
+                android:text="Github Link"
+                android:textStyle="bold"
+                android:visibility="invisible" />
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

@@ -51,6 +51,13 @@ dependencies {
     //implementation "com.squareup.moshi:moshi-kotlin:$version_moshi" //adds support for the Moshi JSON library with Kotlin support.
     //implementation "com.squareup.retrofit2:converter-moshi:$version_retrofit"
     implementation "com.squareup.retrofit2:converter-gson:$version_gson"
+    implementation "androidx.recyclerview:recyclerview:$version_recyclerview"
+    implementation "androidx.cardview:cardview:1.0.0"
+    implementation "com.squareup.picasso:picasso:2.5.2"
 }
 
 /*Moshi library is an Android JSON parser that converts a JSON string into Kotlin objects*/
+
+/*Picasso is an image library which caters to image loading and processing.
+It simplifies the process of displaying images from external locations.
+ */
