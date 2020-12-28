@@ -2,7 +2,8 @@
 buildscript {
     ext.kotlin_version = "1.4.21"
     ext.version_retrofit = "2.9.0"
-    ext.version_moshi = "1.9.3"
+    //ext.version_moshi = "1.9.3"
+    ext.version_gson = "2.5.0"
     repositories {
         google()
         jcenter()

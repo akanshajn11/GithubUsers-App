@@ -1,11 +1,14 @@
 package com.example.users.network
 
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+//import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+//import com.squareup.moshi.Moshi
+//import retrofit2.converter.moshi.MoshiConverterFactory
+//import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.Call
 import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
-import com.squareup.moshi.Moshi
+
 
 /*This class holds the network layer for the app. This is the API which our ViewModel will use
 to communicate with the web service. In this class Retrofit service API is implemented*/
@@ -13,26 +16,33 @@ to communicate with the web service. In this class Retrofit service API is imple
 //Base URL for the Web Service
 private const val BASE_URL = "https://api.github.com"
 
-/**
- * Build the Moshi object that Retrofit will be using, making sure to add the Kotlin adapter for
- * full Kotlin compatibility.
- */
-private val moshi = Moshi.Builder()
-    .add(KotlinJsonAdapterFactory())
-    .build()
+///**
+// * Build the Moshi object that Retrofit will be using, making sure to add the Kotlin adapter for
+// * full Kotlin compatibility.
+// */
+//private val moshi = Moshi.Builder()
+//    .add(KotlinJsonAdapterFactory())
+//    .build()
 
 
 //Creating Retrofit object using Retrofit builder
+//private val retrofit = Retrofit.Builder()
+//    .addConverterFactory(MoshiConverterFactory.create(moshi))
+//    .baseUrl(BASE_URL)
+//    .build()
+
 private val retrofit = Retrofit.Builder()
-    .addConverterFactory(MoshiConverterFactory.create(moshi))
+    .addConverterFactory(GsonConverterFactory.create())
     .baseUrl(BASE_URL)
     .build()
+
 
 /* Retrofit needs at least two things available to it to build a web services API
 1.Base URI for the web service
 2. Converter Factory - tells Retrofit what do with the data it gets back from the web service
-In this case, you want Retrofit to fetch a JSON response from the web service, and return it as a String
+ */
 
+/*ScalarsConverterFactory: When want Retrofit to fetch a JSON response from the web service, and return it as a String.
 Retrofit has a ScalarsConverter that supports strings and other primitive types,
 so you call addConverterFactory() on the builder with an instance of ScalarsConverterFactory
 */
@@ -42,7 +52,7 @@ so you call addConverterFactory() on the builder with an instance of ScalarsConv
 interface RetrofitApiService {
     @GET("/search/users?q=language:android+location:barcelona")
     fun getUsers():
-            Call<List<UserProperty>>
+            Call<ItemResponse>
 }
 /*
 @GET : We use this annotation and specify path or end point for the web service method

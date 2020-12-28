@@ -6,6 +6,10 @@ android {
     compileSdkVersion 30
     buildToolsVersion "29.0.3"
 
+    buildFeatures {
+        dataBinding true
+    }
+
     defaultConfig {
         applicationId "com.example.users"
         minSdkVersion 19
@@ -23,12 +27,12 @@ android {
         }
     }
 
-    compileOptions{
+    compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    kotlinOptions{
+    kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 }
@@ -43,9 +47,10 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation "com.squareup.retrofit2:retrofit:$version_retrofit" //Retrofit 2 library
-   // implementation "com.squareup.retrofit2:converter-scalars:$version_retrofit" //Retrofit scalar converter-enables Retrofit to return the JSON result as a String
-    implementation "com.squareup.moshi:moshi-kotlin:$version_moshi" //adds support for the Moshi JSON library with Kotlin support.
-    implementation "com.squareup.retrofit2:converter-moshi:$version_retrofit"
+    // implementation "com.squareup.retrofit2:converter-scalars:$version_retrofit" //Retrofit scalar converter-enables Retrofit to return the JSON result as a String
+    //implementation "com.squareup.moshi:moshi-kotlin:$version_moshi" //adds support for the Moshi JSON library with Kotlin support.
+    //implementation "com.squareup.retrofit2:converter-moshi:$version_retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$version_gson"
 }
 
 /*Moshi library is an Android JSON parser that converts a JSON string into Kotlin objects*/
