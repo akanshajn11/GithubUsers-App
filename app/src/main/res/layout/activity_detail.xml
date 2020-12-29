@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/userImageHeader"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/detailImageHeight"
+        android:fitsSystemWindows="true"
+        android:scaleType="fitXY" />
+
+    <TextView
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/userImageHeader"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Username"
+        android:textAlignment="center"
+        android:textSize="25dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/header"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="3dp"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/githubLink1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/username"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Github Profile Link"
+        android:textAlignment="center"
+        android:textSize="25dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/link"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/githubLink1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="3dp"
+        android:textSize="20dp" />
+
+
+</RelativeLayout>
+
+
+

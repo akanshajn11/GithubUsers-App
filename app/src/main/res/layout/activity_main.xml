@@ -21,4 +21,3 @@
         android:textSize="@dimen/disconnectedTextSize"
         android:textStyle="bold" />
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-   

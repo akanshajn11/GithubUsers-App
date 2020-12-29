@@ -10,4 +10,5 @@
     <dimen name="cardTextLeftMargin">20dp</dimen>
     <dimen name="cardTextTopMargin">20dp</dimen>
     <dimen name="disconnectedTextSize">30sp</dimen>
+    <dimen name="detailImageHeight">320dp</dimen>
 </resources>
