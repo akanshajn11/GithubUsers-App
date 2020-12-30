@@ -55,6 +55,7 @@ dependencies {
     implementation "androidx.recyclerview:recyclerview:$version_recyclerview"
     implementation "androidx.cardview:cardview:1.0.0"
     implementation "com.squareup.picasso:picasso:2.5.2"
+    implementation "com.github.bumptech.glide:glide:$version_glide"
 }
 
 /*Moshi library is an Android JSON parser that converts a JSON string into Kotlin objects*/

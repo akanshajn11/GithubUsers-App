@@ -6,6 +6,7 @@ buildscript {
         //version_moshi = "1.9.3"
         version_gson = "2.5.0"
         version_recyclerview = "1.2.0-alpha05"
+        version_glide = "4.8.0"
     }
     repositories {
         google()
