@@ -15,7 +15,7 @@ class DetailActivity : AppCompatActivity() {
         val username: TextView = findViewById(R.id.username)
         username.text = intent.extras?.getString("login")
 
-        val htmlUrl: TextView = findViewById(R.id.githubLink1)
+        val htmlUrl: TextView = findViewById(R.id.link)
         htmlUrl.text = intent.extras?.getString("htmlUrl")
 
         val userImage: ImageView = findViewById(R.id.userImageHeader)

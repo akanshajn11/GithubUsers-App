@@ -21,8 +21,12 @@ view holder type the adapter will use.
 
 /*We are passing the list of items we need to display in the constructor for adapter class*/
 
-class OverviewAdapter(private val itemList: List<Item>) :
+class OverviewAdapter(
+    private val itemList: List<Item>,
+    private val userClickListener: OnUserClickListener
+) :
     RecyclerView.Adapter<OverviewAdapter.OverviewHolder>() {
+
 
 /*View Holder :  This class contains information about the row layout and meta data for a row like its position
   in the Recycler View. The references for all units of row layout are cached in the view holder so that it can be reused.
@@ -46,12 +50,13 @@ class OverviewAdapter(private val itemList: List<Item>) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OverviewHolder {
         /*
-        We need to create a view object here. Since View Holder class needs it to create a view holder.
-        Layout Inflater : Used to convert a layout into an object
-        context : The activity hosting the recycler view
-        attachToRoot : Set to false since we need not attach the view object to recycler view now. Recycler view will do it
-         */
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.row_user, parent, false)
+    We need to create a view object here. Since View Holder class needs it to create a view holder.
+    Layout Inflater : Used to convert a layout into an object
+    context : The activity hosting the recycler view
+    attachToRoot : Set to false since we need not attach the view object to recycler view now. Recycler view will do it
+     */
+        val itemView =
+            LayoutInflater.from(parent.context).inflate(R.layout.row_user, parent, false)
         return OverviewHolder(itemView)
     }
 
@@ -64,22 +69,27 @@ class OverviewAdapter(private val itemList: List<Item>) :
     override fun onBindViewHolder(holder: OverviewHolder, position: Int) {
 
         /*
-        currentItem : Item at the required position
-        All the values in the current item will be bind to the view holder
-         */
+    currentItem : Item at the required position
+    All the values in the current item will be bind to the view holder
+     */
 
         val currentItem = itemList[position]
         holder.login.text = currentItem.login
         holder.htmlUrl.text = currentItem.htmlUrl
+        holder.itemView.setOnClickListener {
+            userClickListener.onUserClick(position)
+        }
 
         /*
-        load(): Provide the current image info here
-        into(): Provide the holder location where we need to load this current image
-         */
+    load(): Provide the current image info here
+    into(): Provide the holder location where we need to load this current image
+     */
 
         Picasso.with(holder.avatarUrl.context)
             .load(currentItem.avatarUrl)
             .into(holder.avatarUrl)
+
+
     }
 
 /*
@@ -88,4 +98,10 @@ getItemCount() : Returns the number of items in the list
 
     override fun getItemCount() = itemList.size
 
+    interface OnUserClickListener {
+        fun onUserClick(position: Int)
+    }
+
+
 }
+
