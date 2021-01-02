@@ -9,6 +9,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.users.R
+import com.example.users.database.UserDatabase
+import com.example.users.database.UserViewModel
+import com.example.users.database.UserViewModelFactory
+import com.example.users.databinding.ActivityMainBinding
 import com.example.users.detail.DetailActivity
 
 class MainActivity() : AppCompatActivity(), OverviewAdapter.OnUserClickListener {
@@ -17,10 +21,23 @@ class MainActivity() : AppCompatActivity(), OverviewAdapter.OnUserClickListener 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: OverviewAdapter
     private lateinit var viewModel: OverviewViewModel
+    private lateinit var databaseViewModel: UserViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+        val binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
+
+        val application = requireNotNull(this).application
+        val dataSource = UserDatabase.getInstance(application).userDatabaseDao
+        val databaseViewModelFactory = UserViewModelFactory(dataSource, application)
+        databaseViewModel =
+            ViewModelProvider(this, databaseViewModelFactory).get(UserViewModel::class.java)
+        binding.databaseViewModel = databaseViewModel
+
+        binding.lifecycleOwner = this
 
         val viewModelFactory = OverviewViewModelFactory()
         viewModel = ViewModelProvider(this, viewModelFactory).get(OverviewViewModel::class.java)

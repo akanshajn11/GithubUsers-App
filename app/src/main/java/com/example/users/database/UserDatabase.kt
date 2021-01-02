@@ -1,6 +1,7 @@
 package com.example.users.database
 
 import android.content.Context
+import android.util.Log
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
@@ -21,19 +22,16 @@ abstract class UserDatabase : RoomDatabase() {
                 var instance = INSTANCE
 
                 if (instance == null) {
-
                     instance = Room.databaseBuilder(
-                        context.applicationContext,
+                        context,
                         UserDatabase::class.java,
                         "user_details_database",
-
-                        ).fallbackToDestructiveMigration()// no migration on schema change
+                    ).fallbackToDestructiveMigration()// no migration on schema change
                         .build()
 
                     INSTANCE = instance
 
                 }
-
                 return instance
             }
 
