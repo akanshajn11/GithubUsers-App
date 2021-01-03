@@ -1,6 +1,5 @@
 package com.example.users.database
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
 
 @Dao
@@ -12,16 +11,16 @@ interface UserDatabaseDao {
     @Update
     fun update(user: User)
 
-    @Query("SELECT *  from users_detail_table where userId= :key")
+    @Query("SELECT *  from favourite_users_table where userId= :key")
     fun get(key: Long): User
 
-    @Query("DELETE from users_detail_table")
+    @Query("DELETE from favourite_users_table")
     fun clear()
 
-    @Query("SELECT * from users_detail_table ORDER BY userId DESC")
-    fun getAllUsers(): LiveData<List<User>> //Live data is updated whenever the database is updated
+    @Query("SELECT * from favourite_users_table ORDER BY userId DESC")
+    fun getAllUsers(): List<User>?
 
-    @Query("SELECT * from users_detail_table ORDER BY userId DESC LIMIT 1")
+    @Query("SELECT * from favourite_users_table ORDER BY userId DESC LIMIT 1")
     fun getLatestUser(): User?
 
 }

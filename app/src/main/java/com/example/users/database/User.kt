@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 
-@Entity(tableName = "users_detail_table")
+@Entity(tableName = "favourite_users_table")
 data class User(
     @PrimaryKey(autoGenerate = true)
     var userId: Long = 0L,
