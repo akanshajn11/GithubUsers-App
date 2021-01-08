@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="cardHeight">100dp</dimen>
+    <dimen name="cardMargin">10dp</dimen>
+    <dimen name="cardElevation">60dp</dimen>
+    <dimen name="imageWidth">100dp</dimen>
+    <dimen name="imageHeight">100dp</dimen>
+    <dimen name="imageMarginTop">10dp</dimen>
+    <dimen name="imageMarginLeft">20dp</dimen>
+    <dimen name="cardTextLeftMargin">20dp</dimen>
+    <dimen name="cardTextTopMargin">20dp</dimen>
+    <dimen name="disconnectedTextSize">30sp</dimen>
+    <dimen name="detailImageHeight">320dp</dimen>
+</resources>
