@@ -11,8 +11,8 @@ interface UserDatabaseDao {
     @Update
     fun update(user: User)
 
-    @Query("SELECT *  from favourite_users_table where userId= :key")
-    fun get(key: Long): User
+    @Query("SELECT *  from favourite_users_table where login= :login")
+    fun get(login: String): User
 
     @Query("DELETE from favourite_users_table")
     fun clear()

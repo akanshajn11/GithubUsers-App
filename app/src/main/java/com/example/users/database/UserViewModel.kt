@@ -20,6 +20,11 @@ class UserViewModel(database: UserDatabaseDao, application: Application) :
     val users: LiveData<List<User>>
         get() = _users
 
+    private var _user = MutableLiveData<User>()
+
+    val user: LiveData<User>
+        get() = _user
+
     //Add user to table
     fun addToFavorites(user: User) {
         uiScope.launch {
@@ -58,6 +63,19 @@ class UserViewModel(database: UserDatabaseDao, application: Application) :
         return withContext(Dispatchers.IO) {
             val usersList = db.getAllUsers()
             usersList
+        }
+    }
+
+    fun checkIfFavUser(login: String) {
+        uiScope.launch {
+            _user.value = checkUserInDb(login)
+        }
+    }
+
+    private suspend fun checkUserInDb(login: String): User {
+        return withContext(Dispatchers.IO) {
+            val user = db.get(login)
+            user
         }
     }
 

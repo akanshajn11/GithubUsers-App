@@ -42,16 +42,25 @@ class DetailActivity : AppCompatActivity() {
             .load(intent.extras?.getString("avatarUrl"))
             .into(userImage)
 
-
-        val application = requireNotNull(this).application
-        val dataSource = UserDatabase.getInstance(application).userDatabaseDao
-        val databaseViewModelFactory = UserViewModelFactory(dataSource, application)
+        val databaseViewModelFactory = UserViewModelFactory(
+            UserDatabase.getInstance(requireNotNull(this).application).userDatabaseDao,
+            requireNotNull(this).application
+        )
         databaseViewModel =
             ViewModelProvider(this, databaseViewModelFactory).get(UserViewModel::class.java)
+
+        databaseViewModel.checkIfFavUser(login)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.detail_menu, menu)
+        databaseViewModel.user.observe(this) { user ->
+            if (user != null) {
+                var item: MenuItem? = menu?.findItem(R.id.favBtn)
+                if (item != null)
+                    item.icon = ContextCompat.getDrawable(this, R.drawable.ic_baseline_favorite_24)
+            }
+        }
         return super.onCreateOptionsMenu(menu)
     }
 
