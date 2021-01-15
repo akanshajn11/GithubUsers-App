@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">Users</string>
     <string name="Internet">No internet connection, Please make sure the device is connected to the internet</string>
+    <string name="Fav">FavFilled</string>
+    <string name="NotFav">FavBordered</string>
 </resources>

@@ -23,4 +23,7 @@ interface UserDatabaseDao {
     @Query("SELECT * from favourite_users_table ORDER BY userId DESC LIMIT 1")
     fun getLatestUser(): User?
 
+    @Query("DELETE FROM favourite_users_table where login=:login")
+    fun deleteUser(login: String)
+
 }

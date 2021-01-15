@@ -2,9 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
     <item
-        android:id="@+id/favBtn"
+        android:id="@+id/favFilledBtn"
+        android:icon="@drawable/ic_baseline_favorite_24"
+        android:title="@string/Fav"
+        android:visible="false"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/favBorderBtn"
         android:icon="@drawable/ic_baseline_favorite_border_24"
-        android:title="Fav"
+        android:title="@string/NotFav"
+        android:visible="false"
         app:showAsAction="always" />
 </menu>

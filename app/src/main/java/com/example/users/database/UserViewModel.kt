@@ -20,10 +20,10 @@ class UserViewModel(database: UserDatabaseDao, application: Application) :
     val users: LiveData<List<User>>
         get() = _users
 
-    private var _user = MutableLiveData<User>()
+    private var _favUser = MutableLiveData<User>()
 
-    val user: LiveData<User>
-        get() = _user
+    val favUser: LiveData<User>
+        get() = _favUser
 
     //Add user to table
     fun addToFavorites(user: User) {
@@ -68,7 +68,7 @@ class UserViewModel(database: UserDatabaseDao, application: Application) :
 
     fun checkIfFavUser(login: String) {
         uiScope.launch {
-            _user.value = checkUserInDb(login)
+            _favUser.value = checkUserInDb(login)
         }
     }
 
@@ -76,6 +76,18 @@ class UserViewModel(database: UserDatabaseDao, application: Application) :
         return withContext(Dispatchers.IO) {
             val user = db.get(login)
             user
+        }
+    }
+
+    fun removeFromFav(login: String) {
+        uiScope.launch {
+            removeUserFromDb(login)
+        }
+    }
+
+    private suspend fun removeUserFromDb(login: String) {
+        withContext(Dispatchers.IO) {
+            db.deleteUser(login)
         }
     }
 
