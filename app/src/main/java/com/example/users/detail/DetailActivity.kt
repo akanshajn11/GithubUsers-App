@@ -57,19 +57,6 @@ class DetailActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.detail_menu, menu)
-
-        var favItem: MenuItem? = menu?.findItem(R.id.favFilledBtn)
-        var nonFavItem: MenuItem? = menu?.findItem(R.id.favBorderBtn)
-
-        if (!isMenuCreated) {
-            databaseViewModel.favUser.observe(this) { user ->
-                isFavUser = user != null
-                updateMenuItems(favItem, nonFavItem)
-                isMenuCreated = true
-            }
-        } else
-            updateMenuItems(favItem, nonFavItem)
-
         return super.onCreateOptionsMenu(menu)
     }
 
@@ -108,4 +95,20 @@ class DetailActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+
+        var favItem: MenuItem? = menu?.findItem(R.id.favFilledBtn)
+        var nonFavItem: MenuItem? = menu?.findItem(R.id.favBorderBtn)
+
+        if (!isMenuCreated) {
+            databaseViewModel.favUser.observe(this) { user ->
+                isFavUser = user != null
+                updateMenuItems(favItem, nonFavItem)
+                isMenuCreated = true
+            }
+        } else
+            updateMenuItems(favItem, nonFavItem)
+
+        return super.onPrepareOptionsMenu(menu)
+    }
 }
